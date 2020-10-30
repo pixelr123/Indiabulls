@@ -5,15 +5,18 @@
     <title></title>
     <style type="text/css">
         body {
-            /*             -webkit-box-align: center;
+            /*-webkit-box-align: center;
             align-items: center;
             display: -webkit-box;
-            display: flex; */
-            font-family: Helvetica, sans-serif;
-            /*             height: 100vh;
+            display: flex; 
+            height: 100vh;
             -webkit-box-pack: center;
-            justify-content: center;
-            margin: 0; */
+            justify-content: center; */
+            font-family: Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+            text-align: center;
         }
 
         .myelement {
@@ -117,11 +120,10 @@
             margin-top: 16px;
         }
 
-        body div {
+        /* body div {
             font-size: 15px;
-            /* margin-top: 15px; */
             text-align: center;
-        }
+        } */
 
         form#smileys input[type="radio"] {
             -webkit-appearance: none;
@@ -209,6 +211,15 @@
             width: 200px;
             text-align: center;
             width: 100%;
+        }
+
+        .main-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            height: 100vh;
         }
 
     </style>
@@ -327,39 +338,40 @@
 </head>
 
 <body>
-    <div class="feedback-container">
-        <form id="smileys">
-            <div id="smiley-container" class="feedback__smiley">
-                <span>
-                    <input type="radio" name="smiley" value="Good" id="good" class="good">
-                </span>
-                <span>
-                    <input type="radio" name="smiley" value="Average" id="average" class="average">
-                </span>
-                <span>
-                    <input type="radio" name="smiley" value="Poor" id="poor" class="poor">
-                </span>
-            </div>
-            <div class="feedback__text">
-                <span>
-                    <label for="good" id="goodText"></label>
-                </span>
-                <span>
-                    <label for="average" id="averageText"></label>
-                </span>
-                <span>
-                    <label for="poor" id="poorText"></label>
-                </span>
-            </div>
-        </form>
-    </div>
-    <div class="rating" id='feedback-reason'>
-        <textarea class="textarea" name="txt1" id="txt" placeholder="Provide your feedback..."
-            maxlength=1000></textarea><br>
-        <label class="label1" id='error'>Error</label><br>
-        <button class="button" id="btn"></button>
+    <div class="main-container">
+        <div class="feedback-container">
+            <form id="smileys">
+                <div id="smiley-container" class="feedback__smiley">
+                    <span>
+                        <input type="radio" name="smiley" value="Good" id="good" class="good">
+                    </span>
+                    <span>
+                        <input type="radio" name="smiley" value="Average" id="average" class="average">
+                    </span>
+                    <span>
+                        <input type="radio" name="smiley" value="Poor" id="poor" class="poor">
+                    </span>
+                </div>
+                <div class="feedback__text">
+                    <span>
+                        <label for="good" id="goodText"></label>
+                    </span>
+                    <span>
+                        <label for="average" id="averageText"></label>
+                    </span>
+                    <span>
+                        <label for="poor" id="poorText"></label>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="rating" id='feedback-reason'>
+            <textarea class="textarea" name="txt1" id="txt" placeholder="Provide your feedback..."
+                maxlength=1000></textarea><br>
+            <label class="label1" id='error'>Error</label><br>
+            <button class="button" id="btn"></button>
+        </div>
     </div>
 </body>
 
 </html>
-
