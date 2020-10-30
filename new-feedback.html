@@ -5,12 +5,12 @@
     <title></title>
     <style type="text/css">
         body {
-/*             -webkit-box-align: center;
+            /*             -webkit-box-align: center;
             align-items: center;
             display: -webkit-box;
             display: flex; */
             font-family: Helvetica, sans-serif;
-/*             height: 100vh;
+            /*             height: 100vh;
             -webkit-box-pack: center;
             justify-content: center;
             margin: 0; */
@@ -49,14 +49,15 @@
         }
 
         .rating {
-            width: 200px;
-            height: 240px;
-            width: 100%;
-/*             right: 150px; */
-            border-radius: 5px;
-            align-items: center;
+            width: 228px;
+            height: 212px;
+            /* width: 100%; */
+            /*right: 150px; */
+            /* border-radius: 5px; */
+            /* align-items: center; */
             background-color: #D1FDE4;
             display: none;
+            border-radius: 0px 0px 8px 8px;
         }
 
         .button {
@@ -108,16 +109,17 @@
         .textarea {
             width: 200px;
             height: 120px;
-            /* box-sizing: border-box; */
+            box-sizing: border-box;
             /* border-radius: 8px; */
             border-radius: 3px;
             border: 1px solid black;
             resize: none;
+            margin-top: 16px;
         }
 
         body div {
             font-size: 15px;
-            margin-top: 15px;
+            /* margin-top: 15px; */
             text-align: center;
         }
 
@@ -186,7 +188,7 @@
             display: flex;
             background: #D1FDE4;
             padding: 14px;
-            border-radius: 8px;
+            border-radius: 8px 8px 0px 0px;
             width: 200px;
         }
 
@@ -248,7 +250,7 @@
             $('input[type="radio"]').click('change', function (e) {
                 var ratingValue = $('input[name="smiley"]:checked').val();
                 if (ratingValue === 'Poor') {
-                    document.getElementById('feedback-reason').style.display = 'inline';
+                    document.getElementById('feedback-reason').style.display = 'block';
                 }
                 $('input[type="radio"]').attr('disabled', 'disabled');
                 console.log("Rating Value - ", ratingValue)
@@ -282,7 +284,7 @@
                 count = 0;
                 if (!res) {
                     message = "Please enter only Alpha Numeric characters.<br>"
-                    document.getElementById('error').style.display = 'inline';
+                    document.getElementById('error').style.display = 'block';
                     document.getElementById('error').innerHTML = message
                 }
                 else {
@@ -349,16 +351,15 @@
                     <label for="poor" id="poorText"></label>
                 </span>
             </div>
-            <div style="margin-top: 36px;">
-                <div class="rating" id='feedback-reason'>
-                    <textarea class="textarea" name="txt1" id="txt" placeholder="Provide your feedback..."
-                        maxlength=1000></textarea><br>
-                    <label class="label1" id='error'>Error</label><br>
-                    <button class="button" id="btn"></button>
-                </div>
-            </div>
         </form>
+    </div>
+    <div class="rating" id='feedback-reason'>
+        <textarea class="textarea" name="txt1" id="txt" placeholder="Provide your feedback..."
+            maxlength=1000></textarea><br>
+        <label class="label1" id='error'>Error</label><br>
+        <button class="button" id="btn"></button>
     </div>
 </body>
 
 </html>
+
