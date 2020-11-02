@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+​
 <head>
   <title></title>
   <style type="text/css">
@@ -15,7 +15,7 @@
       justify-content: center;
       margin: 0;
     }
-
+​
     .container {
       /*background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/concrete-texture.png");*/
       /* display: flex;
@@ -27,7 +27,7 @@
       margin-top: 10px;
       padding: 1px;
     }
-
+​
     .main {
       /* display: flex;
       flex-wrap: wrap;
@@ -37,7 +37,7 @@
       position: relative; */
       width: 200px;
     }
-
+​
     .feedback {
       max-width: 280px;
       width: 100%;
@@ -47,7 +47,7 @@
       align-items: center;
       background-color: #FFFFFF;
     }
-
+​
     .rating {
       max-width: 215px;
       height: 240px;
@@ -58,7 +58,7 @@
       background-color: #D1FDE4;
       display: none;
     }
-
+​
     .button {
       background-color: #4466BB;
       border: none;
@@ -74,12 +74,12 @@
       border-radius: 8px;
       cursor: pointer;
     }
-
+​
     .button:hover {
       background-image: none;
       background-color: #cc3300;
     }
-
+​
     .label {
       border: none;
       color: #365196;
@@ -91,7 +91,7 @@
       margin: 3px 2px;
       border-radius: 8px;
     }
-
+​
     .label1 {
       border: none;
       font-weight: bold;
@@ -104,7 +104,7 @@
       border-radius: 8px;
       display: none;
     }
-
+​
     .textarea {
       width: 200px;
       height: 120px;
@@ -112,13 +112,13 @@
       border-radius: 8px;
       resize: none;
     }
-
+​
     body div {
       font-size: 12px;
       /* margin-top: 15px; */
       text-align: center;
     }
-
+​
     form#productsList input[type="radio"] {
       -webkit-appearance: none;
       width: 90px;
@@ -133,32 +133,32 @@
       -webkit-transition: all .2s ease;
       transition: all .2s ease;
     }
-
+​
     form#productsList input[type="radio"]:hover,
     form#productsList input[type="radio"]:checked {
       -webkit-filter: grayscale(0);
       filter: grayscale(0);
     }
-
+​
     form#productsList input[type="radio"]:focus {
       outline: 0;
     }
-
+​
     form#productsList input[type="radio"].good {
       background-image: url(" https://cdn.yellowmessenger.com/Q7DABv053kVi1604061835028.png");
       background-size: cover;
     }
-
+​
     form#productsList input[type="radio"].average {
       background-image: url(" https://cdn.yellowmessenger.com/Q7DABv053kVi1604061835028.png");
       background-size: cover;
     }
-
+​
     form#productsList input[type="radio"].poor {
       background-image: url(" https://cdn.yellowmessenger.com/Q7DABv053kVi1604061835028.png");
       background-size: cover;
     }
-
+​
     .mtt {
       position: fixed;
       bottom: 10px;
@@ -166,48 +166,48 @@
       color: #999;
       text-decoration: none;
     }
-
+​
     .mtt span {
       color: #E74C3C;
     }
-
+​
     .mtt:hover {
       color: #666;
     }
-
+​
     .mtt:hover span {
       color: #C0392B;
     }
-
+​
     .productCard {
       display: flex;
       max-width: 200px;
       min-width: 200px;
     }
-
+​
     .product-row {
       display: flex;
     }
-
+​
     .product-column {
       display: flex;
       flex-direction: column;
       /* margin-left: 10px; */
     }
-
+​
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
-
+​
       let params = new URLSearchParams(window.location.search)
-
+​
       console.log(params.get('products'))
       let product_ = params.get('products')
       let title_ = params.get('title')
-
+​
       document.getElementById('productsTitle').innerHTML = title_;
-
+​
       var allProducts = product_.split('$')
       //var allProducts = ['dhani Account', 'dhani Pay Wallet', 'dhani Account', 'dhani Doctor', 'dhani Pay Wallet'];
       let first = [];
@@ -219,7 +219,7 @@
           second.push(allProducts[i])
         }
       }
-
+​
       first.forEach(value => {
         console.log(value)
         $('#product-row').append(
@@ -239,7 +239,7 @@
           )
         )
       })
-
+​
       second.forEach(value2 => {
         console.log(value2, 'value2')
         $('#product-row').append(
@@ -259,8 +259,8 @@
           )
         )
       })
-
-
+​
+​
       let message = ""
       let count = 0;
       $('input[type="radio"]').click('change', function (e) {
@@ -274,7 +274,7 @@
           window.parent.postMessage(JSON.stringify({
             event_code: 'ym-client-event', data: JSON.stringify({
               event: {
-                code: "feedback",
+                code: "product",
                 data: {
                   value: ratingValue
                 }
@@ -341,7 +341,7 @@
     })
   </script>
 </head>
-
+​
 <body>
   <div class="main">
     <div id="productsTitle">
@@ -367,13 +367,13 @@
       <button class="button" id="btn"></button>
     </div> -->
   </div>
-
+​
   <table id="productData">
     <tr>
       <td></td>
     </tr>
   </table>
-
+​
 </body>
-
+​
 </html>
