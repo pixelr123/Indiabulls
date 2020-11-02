@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <style type="text/css">
+    body {
+      -webkit-box-align: center;
+      align-items: center;
+      display: -webkit-box;
+      display: flex;
+      font-family: Helvetica, sans-serif;
+      height: 100vh;
+      -webkit-box-pack: center;
+      justify-content: center;
+      margin: 0;
+    }
+
+    .container {
+      /*background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/concrete-texture.png");*/
+      /* display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      position: relative; */
+      margin-top: 10px;
+      padding: 1px;
+    }
+
+    .main {
+      /* display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      position: relative; */
+      width: 200px;
+    }
+
+    .feedback {
+      max-width: 280px;
+      width: 100%;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: #FFFFFF;
+    }
+
+    .rating {
+      max-width: 215px;
+      height: 240px;
+      width: 100%;
+      right: 150px;
+      border-radius: 8px;
+      align-items: center;
+      background-color: #D1FDE4;
+      display: none;
+    }
+
+    .button {
+      background-color: #4466BB;
+      border: none;
+      color: white;
+      padding: 2px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      margin: 4px 4px;
+      font-size: 16px;
+      outline: none;
+      width: 150px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-image: none;
+      background-color: #cc3300;
+    }
+
+    .label {
+      border: none;
+      color: #365196;
+      font-weight: bold;
+      padding: 2px;
+      text-align: center;
+      font-size: 16px;
+      display: inline-block;
+      margin: 3px 2px;
+      border-radius: 8px;
+    }
+
+    .label1 {
+      border: none;
+      font-weight: bold;
+      color: #CC3300;
+      padding: 2px 4px;
+      text-align: center;
+      font-size: 10px;
+      display: inline-block;
+      margin: 3px 2px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .textarea {
+      width: 200px;
+      height: 120px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      resize: none;
+    }
+
+    body div {
+      font-size: 12px;
+      /* margin-top: 15px; */
+      text-align: center;
+    }
+
+    form#productsList input[type="radio"] {
+      -webkit-appearance: none;
+      width: 90px;
+      height: 61px;
+      border: none;
+      cursor: pointer;
+      -webkit-transition: border .2s ease;
+      transition: border .2s ease;
+      /*-webkit-filter: grayscale(100%);*/
+      /*filter: grayscale(100%);*/
+      margin: 0 5px;
+      -webkit-transition: all .2s ease;
+      transition: all .2s ease;
+    }
+
+    form#productsList input[type="radio"]:hover,
+    form#productsList input[type="radio"]:checked {
+      -webkit-filter: grayscale(0);
+      filter: grayscale(0);
+    }
+
+    form#productsList input[type="radio"]:focus {
+      outline: 0;
+    }
+
+    form#productsList input[type="radio"].good {
+      background-image: url(" https://cdn.yellowmessenger.com/Q7DABv053kVi1604061835028.png");
+      background-size: cover;
+    }
+
+    form#productsList input[type="radio"].average {
+      background-image: url(" https://cdn.yellowmessenger.com/Q7DABv053kVi1604061835028.png");
+      background-size: cover;
+    }
+
+    form#productsList input[type="radio"].poor {
+      background-image: url(" https://cdn.yellowmessenger.com/Q7DABv053kVi1604061835028.png");
+      background-size: cover;
+    }
+
+    .mtt {
+      position: fixed;
+      bottom: 10px;
+      right: 20px;
+      color: #999;
+      text-decoration: none;
+    }
+
+    .mtt span {
+      color: #E74C3C;
+    }
+
+    .mtt:hover {
+      color: #666;
+    }
+
+    .mtt:hover span {
+      color: #C0392B;
+    }
+
+    .productCard {
+      display: flex;
+      max-width: 200px;
+      min-width: 200px;
+    }
+
+    .product-row {
+      display: flex;
+    }
+
+    .product-column {
+      display: flex;
+      flex-direction: column;
+      /* margin-left: 10px; */
+    }
+
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      let params = new URLSearchParams(window.location.search)
+
+      console.log(params.get('products'))
+      let product_ = params.get('products')
+      let title_ = params.get('title')
+
+      document.getElementById('productsTitle').innerHTML = title_;
+
+      var allProducts = product_.split('$')
+      //var allProducts = ['dhani Account', 'dhani Pay Wallet', 'dhani Account', 'dhani Doctor', 'dhani Pay Wallet'];
+      let first = [];
+      let second = [];
+      for (let i = 0; i < allProducts.length; i++) {
+        if (i % 2 == 0) {
+          first.push(allProducts[i])
+        } else {
+          second.push(allProducts[i])
+        }
+      }
+
+      first.forEach(value => {
+        console.log(value)
+        $('#product-row').append(
+          $('#column1').append($('<input>').prop({
+            type: 'radio',
+            id: value,
+            name: 'product',
+            class: 'good',
+            value: value,
+            // style: background-image: 'https://cdn.yellowmessenger.com/6lfhoxFLXjuL1602223181018.jpg',
+            // background-size: cover;
+          })
+          ).append(
+            $('<label>').prop({
+              for: value
+            }).html(value)
+          )
+        )
+      })
+
+      second.forEach(value2 => {
+        console.log(value2, 'value2')
+        $('#product-row').append(
+          $('#column2').append($('<input>').prop({
+            type: 'radio',
+            id: value2,
+            name: 'product',
+            class: 'good',
+            value: value2,
+            // style: background-image: 'https://cdn.yellowmessenger.com/6lfhoxFLXjuL1602223181018.jpg',
+            // background-size: cover;
+          })
+          ).append(
+            $('<label>').prop({
+              for: value2
+            }).html(value2)
+          )
+        )
+      })
+
+
+      let message = ""
+      let count = 0;
+      $('input[type="radio"]').click('change', function (e) {
+        var ratingValue = $('input[name="product"]:checked').val();
+        if (ratingValue === 'Poor') {
+          document.getElementById('feedback-reason').style.display = 'inline';
+        }
+        $('input[type="radio"]').attr('disabled', 'disabled');
+        console.log("Rating Value - ", ratingValue)
+        if (ratingValue !== 'Poor') {
+          window.parent.postMessage(JSON.stringify({
+            event_code: 'ym-client-event', data: JSON.stringify({
+              event: {
+                code: "feedback",
+                data: {
+                  value: ratingValue
+                }
+              }
+            })
+          }), '*');
+        }
+      })
+      $('textarea').on("keydown", function (e) {
+        currentWords = $('textarea').val().replace(/  +/g, ' ').split(/[\s]+/).length;
+        if (currentWords > 500) {
+          if (e.which == 46 || e.which == 8) {
+          }
+          else if (e.which < 48 || e.which > 57) {
+            e.preventDefault();
+          }
+        }
+      });
+      $('textarea').on("keyup", function (e) {
+        let text = $('textarea').val();
+        var patt = new RegExp("^[a-zA-Z0-9 .,/-]*$");
+        var res = patt.test(text);
+        count = 0;
+        if (!res) {
+          message = "Please enter only Alpha Numeric characters.<br>"
+          document.getElementById('error').style.display = 'inline';
+          document.getElementById('error').innerHTML = message
+        }
+        else {
+          message = ""
+          document.getElementById('error').style.display = 'none';
+        }
+      });
+      $('button').on("click", function (e) {
+        document.getElementById("txt").style.backgroundColor = "#FFFFFF";
+        var x = document.getElementById("txt").value.replace(/  +/g, ' ').trim();
+        let currentWords1 = document.getElementById("txt").value.replace(/  +/g, ' ').split(/[\s]+/).length;
+        if (x.length > 0) {
+          if (currentWords1 < 50 && x.length < 100) {
+            count = count + 1
+            if (count === 1) {
+              message = message.concat("Please provide min 100 characters/50 words to proceed.")
+            }
+            document.getElementById('error').style.display = 'inline';
+            document.getElementById('error').innerHTML = message;
+          }
+          else {
+            document.getElementById('error').style.display = 'none';
+            document.getElementById("btn").style.visibility = "hidden";
+            document.getElementById("txt").disabled = true;
+            window.parent.postMessage(JSON.stringify({
+              event_code: 'ym-client-event', data: JSON.stringify({
+                event: {
+                  code: "feedback",
+                  data: {
+                    value: x.concat("$Poor")
+                  }
+                }
+              })
+            }), '*');
+          }
+        }
+      });
+    })
+  </script>
+</head>
+
+<body>
+  <div class="main">
+    <div id="productsTitle">
+      Please select a Dhani Product to continue👇
+    </div>
+    <div class="container" id="smiley-container">
+      <form id="productsList" class="feedback">
+        <div class="productCard">
+          <div class="product-row" id="product-row">
+            <div class="product-column" id="column1">
+            </div>
+            <div class="product-column" id="column2">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!--placeholder="Provide your feedback.."-->
+<!--     <div class="rating" id='feedback-reason'>
+      <textarea class="textarea" name="txt1" id="txt" placeholder="Provide your feedback..."
+        maxlength=1000></textarea><br>
+      <label class="label1" id='error'>Error</label><br>
+      <button class="button" id="btn"></button>
+    </div> -->
+  </div>
+
+  <table id="productData">
+    <tr>
+      <td></td>
+    </tr>
+  </table>
+
+</body>
+
+</html>
